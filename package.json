@@ -1,19 +1,22 @@
 {
-  "name": "otlp",
+  "name": "OTLP to Seq",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Generate traces and send to Seq",
+  "main": "app.mjs",
   "scripts": {
-    "start": "node -r ./instrumentation.js app.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "env OTEL_SERVICE_NAME=\"app.js\" node -r ./instrumentation.js app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "host": "env OTEL_SERVICE_NAME=\"host process\" node -r ./instrumentation.js host.mjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@opentelemetry/api": "^1.4.1",
     "@opentelemetry/auto-instrumentations-node": "^0.39.2",
     "@opentelemetry/exporter-trace-otlp-proto": "^0.43.0",
+    "@opentelemetry/instrumentation-express": "^0.33.1",
+    "@opentelemetry/instrumentation-http": "^0.43.0",
     "@opentelemetry/resources": "^1.17.0",
     "@opentelemetry/sdk-metrics": "^1.17.0",
     "@opentelemetry/sdk-node": "^0.43.0",
