@@ -14,8 +14,6 @@ const {
     SemanticResourceAttributes,
   } = require('@opentelemetry/semantic-conventions');
 
-
-
 const sdk = new NodeSDK({
     traceExporter: new OTLPTraceExporter({
         // optional - default url is http://localhost:4318/v1/traces
