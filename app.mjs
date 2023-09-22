@@ -16,8 +16,6 @@ app.get('/rolldice', (req, res) => {
     'instrumentation-scope-version',
   );
 
-  
-
   tracer.startActiveSpan(
     'roll the dice ' + PORT, 
     { kind: 1 }, // server
@@ -25,7 +23,7 @@ app.get('/rolldice', (req, res) => {
       const nextPort = PORT === 8096 ? 8081 : PORT + 1;
 
       // recursive call here to a different port
-      const p = Math.random() < 0 
+      const p = Math.random() < 0.9 
         ? fetch(`http://localhost:${nextPort}/rolldice`) 
         : Promise.resolve(0);
 
